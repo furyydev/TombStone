@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tomb_stone/components/button.dart';
+import 'package:tomb_stone/components/square_tile.dart';
 import 'package:tomb_stone/components/text_feild.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,18 +12,19 @@ class LoginPage extends StatelessWidget {
 
   void loginUser() {}
 
+  void googleLogin() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.black),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Container(
           alignment: Alignment.center,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
-
               //TombStone
               Text(
                 'TombStone',
@@ -45,12 +47,12 @@ class LoginPage extends StatelessWidget {
                   letterSpacing: 1,
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
               //Tombstone image
-              Image.asset('lib/assets/tombstone.png', height: 200, width: 200),
+              Image.asset('lib/assets/tombstone.png', height: 150, width: 150),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
               //Email text field
               MyTextField(
@@ -86,16 +88,73 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 30),
 
               //login button
-              Mybutton(onTap: loginUser),
+              Mybutton(onTap: loginUser, name: 'Sign in'),
+
+              const SizedBox(height: 20),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(thickness: 0.5, color: Color(0xff46474c)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or',
+                        style: GoogleFonts.ubuntu(color: Colors.white70),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Color((0xff46474c)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              //google button
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MySquareTile(iconPath: 'lib/assets/search.png'),
+
+                  SizedBox(width: 15),
+
+                  //github button
+                  MySquareTile(iconPath: 'lib/assets/github.png'),
+                ],
+              ),
 
               const SizedBox(height: 30),
 
+              //dont have an account? create one
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(child: Divider(thickness: 1),),
-                  Text('Or', style: TextStyle(color: Colors.white),),
-                  Expanded(child: Divider(thickness: 1),)
-                  
+                  Text(
+                    'Dont have an account?',
+                    style: GoogleFonts.ubuntu(
+                      color: Color(0xff46474c),
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                    // onTap: ontap,
+                    child: Text(
+                      'Sign Up',
+                      style: GoogleFonts.ubuntu(
+                        color: Color(0xff4b5dff),
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],

@@ -26,10 +26,12 @@ class MyTextField extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         decoration: InputDecoration(
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: Color(0xff22252c)),
           ),
           focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: Colors.white),
           ),
           fillColor: Color(0xff22252c),
