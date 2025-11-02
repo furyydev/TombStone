@@ -88,7 +88,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 30),
 
               //login button
-              Mybutton(onTap: loginUser, name: 'Sign in'),
+              Mybutton(onTap: loginUser, name: 'Sign in'),//login auth
 
               const SizedBox(height: 20),
 
@@ -147,7 +147,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   GestureDetector(
-                    // onTap: ontap,
+                    onTap: googleLogin,// sign auth idhar ayega
                     child: Text(
                       'Sign Up',
                       style: GoogleFonts.ubuntu(
