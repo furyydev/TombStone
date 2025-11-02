@@ -127,7 +127,8 @@ class LoginPage extends StatelessWidget {
                   SizedBox(width: 15),
 
                   //github button
-                  MySquareTile(iconPath: 'lib/assets/github.png'),
+                  MySquareTile(iconPath: 'lib/assets/github_dark.png'),
+                  
                 ],
               ),
 

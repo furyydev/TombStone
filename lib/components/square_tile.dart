@@ -14,7 +14,9 @@ class MySquareTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Color(0xff46474c)),
       ),
-      child: Image.asset(iconPath, height: 25),
+      child: Image.asset(iconPath, height: 25, ),
+
+    
     );
   }
 }
