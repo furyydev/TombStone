@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tomb_stone/pages/login_page.dart';
 
 void main() {
-    runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'Tomb Stone',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black), // your global background
-      
-      home: const LoginPage(),
+        scaffoldBackgroundColor: Colors.black,
+      ), // your global background
+
+      home: LoginPage(),
     );
   }
 }
