@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098462352279",
+    "project_id": "todoi-35c71",
+    "storage_bucket": "todoi-35c71.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098462352279:android:61f9a620d7b1596bceaad2",
+        "android_client_info": {
+          "package_name": "com.example.tomb_stone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuVg2Z0pxL2TrUcSqGAvmFGIBWuBoBoMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
