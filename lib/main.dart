@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tomb_stone/pages/login_page.dart';
+// import 'package:tomb_stone/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:tomb_stone/firebase_options.dart';
+import 'package:tomb_stone/services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
       ), // your global background
 
-      home: LoginPage(),
+      home: AuthService(),
     );
   }
 }
