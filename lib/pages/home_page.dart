@@ -10,21 +10,20 @@ class HomePage extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
 
   //logout button
-  void LogOutUser() {
+  void logOutUser() {
     FirebaseAuth.instance.signOut();
   }
 
   //loading screen
 
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: LogOutUser,
+            onPressed: logOutUser,
             icon: Icon(Icons.logout, color: Colors.white),
           ),
         ],

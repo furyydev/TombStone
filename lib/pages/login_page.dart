@@ -6,7 +6,6 @@ import 'package:tomb_stone/components/square_tile.dart';
 import 'package:tomb_stone/components/text_feild.dart';
 // import 'package:lottie/lottie.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -20,25 +19,23 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   void loginUser() async {
-    // showDialog(
-    //   context: context,
-    //   builder: (context) {
-    //     return Center(
-    //       child: Dialog(
-    //         backgroundColor: Colors.transparent,
-    //         elevation: 0,
-    //         child: Lottie.asset('lib/assets/W3qcFvbuxF.lottie')
-    //       ),
-    //     );
-    //   },
-    // );
+    //LOADING GOL GOL
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
 
+    // FIREBASE AUTH
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: usernameController.text,
       password: passwordController.text,
     );
-  }
 
+    // LOADING END
+    Navigator.pop(context);
+  }
 
   void googleLogin() {}
 
@@ -65,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 5),
-            
+
                 //Login text
                 Text(
                   'Please Login to you account',
@@ -77,26 +74,30 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-            
+
                 //Tombstone image
-                Image.asset('lib/assets/tombstone.png', height: 150, width: 150),
-            
+                Image.asset(
+                  'lib/assets/tombstone.png',
+                  height: 150,
+                  width: 150,
+                ),
+
                 const SizedBox(height: 20),
-            
+
                 //Email text field
                 MyTextField(
                   controller: usernameController,
                   hinttext: 'Email',
                   secure: false,
                 ),
-            
+
                 //Password text field
                 MyTextField(
                   controller: passwordController,
                   hinttext: 'Password',
                   secure: true,
                 ),
-            
+
                 //forgot password
                 Padding(
                   padding: const EdgeInsets.only(right: 25.0),
@@ -113,20 +114,23 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-            
+
                 const SizedBox(height: 30),
-            
+
                 //login button
                 Mybutton(onTap: loginUser, name: 'Sign in'), //login auth
-            
+
                 const SizedBox(height: 20),
-            
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
                     children: [
                       Expanded(
-                        child: Divider(thickness: 0.5, color: Color(0xff46474c)),
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Color(0xff46474c),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -144,24 +148,24 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-            
+
                 const SizedBox(height: 20),
-            
+
                 //google button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MySquareTile(iconPath: 'lib/assets/search.png'),
-            
+
                     SizedBox(width: 15),
-            
+
                     //github button
                     MySquareTile(iconPath: 'lib/assets/github_dark.png'),
                   ],
                 ),
-            
+
                 const SizedBox(height: 30),
-            
+
                 //dont have an account? create one
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
