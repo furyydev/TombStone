@@ -28,13 +28,42 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     // FIREBASE AUTH
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: usernameController.text,
-      password: passwordController.text,
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: usernameController.text,
+        password: passwordController.text,
+      );
 
-    // LOADING END
-    Navigator.pop(context);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      print("Firebase ERROR: ${e.code}");
+
+
+      if (e.code == 'invalid-credential') {
+        wrongUsername();
+      } else {
+        loginError();
+      }
+    }
+  }
+
+  void wrongUsername() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(title: Text('Invalid Login Credentials'));
+      },
+    );
+  }
+
+  void loginError() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(title: Text('Login Error'));
+      },
+    );
   }
 
   void googleLogin() {}
