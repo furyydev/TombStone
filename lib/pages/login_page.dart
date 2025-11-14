@@ -34,9 +34,10 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
 
-      Navigator.pop(context);
+      if(mounted){Navigator.pop(context);};
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
+      if(mounted){Navigator.pop(context);};
+      if(mounted){Navigator.pop(context);};
       print("Firebase ERROR: ${e.code}");
 
 
