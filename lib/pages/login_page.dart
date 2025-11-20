@@ -34,12 +34,15 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
 
-      if(mounted){Navigator.pop(context);};
+      if (mounted) {
+        Navigator.pop(context);
+      }
     } on FirebaseAuthException catch (e) {
-      if(mounted){Navigator.pop(context);};
-      if(mounted){Navigator.pop(context);};
+      if (mounted) {
+        Navigator.pop(context);
+      }
+      ;
       print("Firebase ERROR: ${e.code}");
-
 
       if (e.code == 'invalid-credential') {
         wrongUsername();
