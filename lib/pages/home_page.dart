@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                     SizedBox(height: 20),
                     TaskTile(name: 'Design Crit', time: '09:00'),
                     SizedBox(height: 20),
-                    TaskTile(name: 'Haircut with Vincent', time: '09:00'),
+                    TaskTile(name: 'Haircut', time: '09:00'),
                     SizedBox(height: 20),
                     TaskTile(name: 'Birthday Party', time: '09:00'),
                     SizedBox(height: 20),
@@ -53,7 +53,26 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              
+              SizedBox(
+                width: 76,
+                height: 54,
+                child: FloatingActionButton(
+                  onPressed: () {},
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.grey.shade200,
+                  elevation: 0,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: Icon(
+                    Icons.add,
+                    size: 30,
+                    color: Colors.grey.shade700,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
