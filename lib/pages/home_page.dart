@@ -21,60 +21,57 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfffffbff),
-      floatingActionButton: FloatingActionButton(onPressed: logOutUser),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _addTaskButton(),
+      // floatingActionButton: FloatingActionButton(onPressed: logOutUser),
 
       // Date , month , day
       body: SafeArea(
         child: Padding(
-          // smaller top padding so header stays near the top like the reference
           padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-          child: Column(
-            children: [
-              // Header (Date Month Day)
-              _header(),
-
-              SizedBox(height: 15),
-
-              // List of tasks
-              Expanded(
-                child: ListView(
-                  children: [
-                    TaskTile(name: 'Wake Up', time: '09:00'),
-                    SizedBox(height: 20),
-                    TaskTile(name: 'Design Crit', time: '09:00'),
-                    SizedBox(height: 20),
-                    TaskTile(name: 'Haircut', time: '09:00'),
-                    SizedBox(height: 20),
-                    TaskTile(name: 'Birthday Party', time: '09:00'),
-                    SizedBox(height: 20),
-                    TaskTile(name: 'Finish designs', time: '09:00'),
-                    SizedBox(height: 20),
-                    TaskTile(name: 'Make Pasta', time: '09:00'),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 76,
-                height: 54,
-                child: FloatingActionButton(
-                  onPressed: () {},
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.grey.shade200,
-                  elevation: 0,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    size: 30,
-                    color: Colors.grey.shade700,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+          child: CustomScrollView(
+            // controller: ScrollController(),
+            slivers: [
+              SliverToBoxAdapter(child: _header()),
+              SliverToBoxAdapter(child: SizedBox(height: 15)),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  TaskTile(name: 'Wake Up', time: '09:00'),
+                  SizedBox(height: 20),
+                  TaskTile(name: 'Design Crit', time: '09:00'),
+                  SizedBox(height: 20),
+                  TaskTile(name: 'Haircut', time: '09:00'),
+                  SizedBox(height: 20),
+                  TaskTile(name: 'Birthday Party', time: '09:00'),
+                  SizedBox(height: 20),
+                  TaskTile(name: 'Finish designs', time: '09:00'),
+                  SizedBox(height: 20),
+                  TaskTile(name: 'Make Pasta', time: '09:00'),
+                ]),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _addTaskButton() {
+    return SizedBox(
+      width: 76,
+      height: 54,
+      child: FloatingActionButton(
+        onPressed: () {},
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.grey.shade200,
+        elevation: 0,
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+        child: Icon(
+          Icons.add,
+          size: 30,
+          color: Colors.grey.shade700,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
