@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:tomb_stone/firebase_options.dart';
 import 'package:tomb_stone/services/auth_service.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(
+  DevicePreview(
+    builder: (context) => MyApp(), // Wrap your app
+  ),
+  );
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,10 +24,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tomb Stone',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
-      ), // your global background
-
       home: AuthService(),
     );
   }

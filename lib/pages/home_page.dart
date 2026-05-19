@@ -6,48 +6,89 @@ import 'package:tomb_stone/components/task_tile.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:tomb_stone/pages/login_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
 
-  //logout button
+  final ScrollController _scrollController = ScrollController();
 
+  double offset = 0;
+
+  @override
+  void initState() {
+    // The line 'super.initState();' calls the parent's (State) initState method,
+    // which is required to properly initialize the widget's state.
+    // It ensures that any initialization logic in the parent class is executed.
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {
+        offset = _scrollController.offset;
+      });
+    });
+  }
+
+  //logout button
   void logOutUser() {
     FirebaseAuth.instance.signOut();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfffffbff),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: _addTaskButton(),
-      // floatingActionButton: FloatingActionButton(onPressed: logOutUser),
-
-      // Date , month , day
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xfffffbff),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: _addTaskButton(),
+        // floatingActionButton: FloatingActionButton(onPressed: logOutUser),
+      
+        // Date , month , day
+        body: SafeArea(
           child: CustomScrollView(
-            // controller: ScrollController(),
+            controller: _scrollController,
             slivers: [
-              SliverToBoxAdapter(child: _header()),
+              SliverAppBar(
+                expandedHeight: 350,
+                backgroundColor: Colors.lime,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32.0,
+                        vertical: 20.0,
+                      ),
+                      child: _header(),
+                    ),
+                  ),
+                ),
+              ),
+              // SliverToBoxAdapter(child: Container(height: 300, color: Colors.black)),
               SliverToBoxAdapter(child: SizedBox(height: 15)),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  TaskTile(name: 'Wake Up', time: '09:00'),
-                  SizedBox(height: 20),
-                  TaskTile(name: 'Design Crit', time: '09:00'),
-                  SizedBox(height: 20),
-                  TaskTile(name: 'Haircut', time: '09:00'),
-                  SizedBox(height: 20),
-                  TaskTile(name: 'Birthday Party', time: '09:00'),
-                  SizedBox(height: 20),
-                  TaskTile(name: 'Finish designs', time: '09:00'),
-                  SizedBox(height: 20),
-                  TaskTile(name: 'Make Pasta', time: '09:00'),
-                ]),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32.0,
+                  vertical: 16.0,
+                ),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    TaskTile(name: 'Wake Up', time: '09:00'),
+                    SizedBox(height: 20),
+                    TaskTile(name: 'Design Crit', time: '09:00'),
+                    SizedBox(height: 20),
+                    TaskTile(name: 'Haircut', time: '09:00'),
+                    SizedBox(height: 20),
+                    TaskTile(name: 'Birthday Party', time: '09:00'),
+                    SizedBox(height: 20),
+                    TaskTile(name: 'Finish designs', time: '09:00'),
+                    SizedBox(height: 20),
+                    TaskTile(name: 'Make Pasta', time: '09:00'),
+                  ]),
+                ),
               ),
             ],
           ),

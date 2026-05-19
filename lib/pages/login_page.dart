@@ -75,7 +75,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black),
+      // appBar: AppBar(backgroundColor: Colors.black),
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Container(
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 //Tombstone image
                 Image.asset(
-                  'lib/assets/tombstone.png',
+                  'assets/tombstone.png',
                   height: 150,
                   width: 150,
                 ),
@@ -188,12 +189,12 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MySquareTile(iconPath: 'lib/assets/search.png'),
+                    MySquareTile(iconPath: 'assets/search.png'),
 
                     SizedBox(width: 15),
 
                     //github button
-                    MySquareTile(iconPath: 'lib/assets/github_dark.png'),
+                    MySquareTile(iconPath: 'assets/github_dark.png'),
                   ],
                 ),
 
